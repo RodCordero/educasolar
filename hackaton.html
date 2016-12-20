@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script> 
+
+    <style type="text/css">
+        #container {
+          display: flex;                  /* establish flex container */
+          flex-direction: row;            /* default value; can be omitted */
+          flex-wrap: nowrap;              /* default value; can be omitted */
+          justify-content: default; /* switched from default (flex-start, see below) */
+        }
+        #container > div {
+          width: 420px;
+          height: 420px;
+          border: 1px solid black;
+        }
+
+        #container2 {
+          display: flex;                  /* establish flex container */
+          flex-direction: row;            /* default value; can be omitted */
+          flex-wrap: nowrap;              /* default value; can be omitted */
+          justify-content: default; /* switched from default (flex-start, see below) */
+        }
+        #container2 > div {
+          width: 630px;
+          height: 70px;
+          border: 1px solid black;
+          background-color: rgb(224, 194, 14);
+        }
+
+        .slick-prev {
+            left: 0px;
+            z-index: 1;
+        }
+
+        .slick-next {
+            right: 0px;
+            z-index: 1;
+        }
+
+        .slick-prev:before, .slick-next:before {
+           color: #000;
+        }
+
+        .table-bottom-separator {
+            border-bottom: 1px solid black;
+        }
+
+        .table-right-separator {
+            border-right: 1px solid black;
+        }
+
+        #container div {
+            background-color: rgb(172, 226, 225);
+        }
+
+        * {
+            font-family: Georgia, serif
+        }
+
+        .inner {
+            height: 50%;
+            margin: 0 auto; 
+        }
+
+    </style>
+
+  </head>
+<body>
+
+<select id="region-select" onchange="changeRegion()">
+  <option value="0">Metropolitana</option>
+  <option value="1">Valparaíso</option>
+  <option value="2">Atacama</option>
+</select>
+
+
+<div id="container">
+<div><img id="region-image" style="height: 100%;"/></div>
+
+<div class="carrusel">
+  <div><img src="primero.png" class="inner" style="width: 100%;" /></div>
+  <div><img src="segundo.png" class="inner" style="width: 100%;" /></div>
+  <div><img src="tercero.png" class="inner" style="width: 100%;" /></div>
+</div>
+
+<div>
+    <table class="table" style="height: 100%;">
+      <tbody>
+        <tr>
+          <td colspan="4"><span id="proyectos">Cantidad de proyectos en Región XIII: 25</span></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="table-bottom-separator"><span id="kilowatts">Kilowatts: 100</span></td>
+          <td colspan="2" class="table-bottom-separator"><span id="inversion">Inversión: $50.000.000</span></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="table-right-separator">I+D</td>
+          <td colspan="2"> Proveedores</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="table-right-separator">
+                <a href="http://academia-solar.aeurus.cl/oferta-de-formacion/">¿Buscas capacitación?</a>
+            </td>
+            <td>
+                <a href="http://www.enlacesolar.cl/directorio-de-empresas/">Conoce nuestra red de proveedores</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="table-right-separator">
+                <a href="http://academia-solar.aeurus.cl/">Investigación solar en Chile</a>
+            </td>
+            <td>
+                <a href="http://www.enlacesolar.cl/directorio-de-empresas/registrar-empresa/">¡Únete a la red de proveedores!</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="table-right-separator">
+                <a href="http://industria-solar.aeurus.cl/innovacion-abierta/">¡Desarrola tu perfil académico!</a>
+            </td>
+            <td>
+                <img src="logo-mediano.png" style="width: 100%;" />
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+</div>
+
+<style type="text/css">
+    #mascota {
+        position:fixed;
+        right: 100px;
+        bottom: 165px;
+         width: 100px; 
+    }
+</style>
+
+<div id="container2">
+    <div><p>Más información:</p><p><a href="http://enlace-solar.aeurus.cl/"><h2>Enlace Solar</h2></a></p></div>
+    <div>
+        <h1>Educa Solar</h1>
+        <img id="mascota" src="mascota.png" />
+    </div>
+</div>
+
+<script>
+
+    $('.carrusel').slick({
+        arrows: true
+    });
+
+    var images = [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Mapa_loc_Metropolitana.svg/143px-Mapa_loc_Metropolitana.svg.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Mapa_loc_Valpara%C3%ADso.svg/143px-Mapa_loc_Valpara%C3%ADso.svg.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Mapa_loc_Atacama.svg/143px-Mapa_loc_Atacama.svg.png"
+    ];
+
+    function changeRegion() {
+        var e = document.getElementById("region-select");
+        var region = e.options[e.selectedIndex].value;
+        $("#region-image").attr("src", images[region]);
+        $("#proyectos").text("Cantidad de proyectos en región Metropolitana : " + (region*12+15));
+        $("#kilowatts").text("Capacidad: " + (region+5)*1000 + "Kw");
+        $("#inversion").text("Inversión: $" + ((region+3)*2000000) );
+    }
+
+    var regiones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "RM", "XIV", "XV"];
+    var proyectosPorRegion = {
+        I: 0,
+        II: 0,
+        III: 0,
+        IV: 0,
+        V: 0,
+        VI: 0,
+        VII: 0,
+        VIII: 0,
+        IX: 0,
+        X: 0,
+        XI: 0,
+        XII: 0,
+        XIII: 0,
+        XIV: 0,
+        XV: 0,
+        RM: 0,
+        Interregional: 0
+    };
+    function energiaabierta() {
+        var api_key = "49950d0eafca861e9405d5b063d644bff733e96f";
+        var guid = "GENER-REAL-SING-POR-TIPO";
+        guid = "PROYE-ENERG-RCA-APROB";
+
+        $.get(
+            "http://cne.cloudapi.junar.com/api/v2/datastreams/" + guid + "/data.json/",
+            {
+                auth_key : api_key,
+                limit : '500',
+                filter0: 'column6[contains]Solar',
+            },
+            function(data) {
+                var cols = data.result.fCols;
+                var rows = data.result.fRows;
+                var r = data.result.fArray;
+                var cleanData = []
+                var headers = [];
+                for (var j = 0; j < cols; ++j) {
+                    headers.push(r[j].fStr);
+                }
+                console.log(headers);
+                console.log(rows, cols);
+                for (var i = 1; i < rows; ++i) {
+                    var temp = {};
+                    for (var j = 0; j < cols; ++j) {
+                        //console.log(i*cols + j, r[i*cols + j]);
+                        if (r[i*cols + j].fType == "TEXT")
+                            temp[headers[j]] = r[i*cols + j].fStr;
+                        else if (r[i*cols + j].fType == "NUMBER")
+                            temp[headers[j]] = r[i*cols + j].fNum;
+                    }
+                    //console.log(temp['Región']);
+                    proyectosPorRegion[temp['Región']] = proyectosPorRegion[temp['Región']] + 1;
+                    cleanData.push(temp);
+                }
+                console.log(proyectosPorRegion);
+                console.log(cleanData);
+            }
+        );
+        changeRegion();
+    }
+    energiaabierta();
+</script>
+
+</body>
+</html>
